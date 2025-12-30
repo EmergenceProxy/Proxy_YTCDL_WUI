@@ -1,0 +1,19 @@
+.venv/
+
+*.pyc
+__pycache__/
+
+instance/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
+
+
+To the best lil chicken in the whole damn world, 
+​Wishing you a birthday at least half as sweet as you. 
+Love You Baby!

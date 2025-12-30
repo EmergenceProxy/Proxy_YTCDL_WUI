@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login/Register UI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login2_style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="registerTab">Register</button>
+    </div>
+    <!-- Login Form -->
+    <form id="loginForm" class="form active" action = "http://18.225.8.106:5000/login_Test" method = "post">
+      <input type="text"     placeholder="Username" name="usrnm" />
+          <input type="email"    placeholder="ur_aL0s3r@gmail.com" />
+      <input type="password" placeholder="Password" name="usrpw" required />
+	  <button type="submit" class="btn"><i class="fa fa-sign-in-alt"></i> Login</button>
+      <p class="or">Or continue with</p>
+      <div class="socials">
+        <button class="social">G</button>
+        <button class="social">FB</button>
+        <button class="social">T</button>
+      </div>
+    </form>
+    <!-- Register Form -->
+    <form id="registerForm" class="form" action = "http://18.225.8.106:5000/register" method = "post">
+      <input type="text" placeholder="Full Name" required />
+	  <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm Password" required />
+      <button type="submit" class="btn"><i class="fa fa-user-plus"></i> Register</button>
+      <p class="or">Or sign up with</p>
+      <div class="socials">
+        <button class="social">G</button>
+        <button class="social">FB</button>
+        <button class="social">T</button>
+      </div>
+    </form>
+  </div>
+  <script src="{{ url_for('static', filename='js/login2_script.js') }}"></script>
+</body>
+</html>

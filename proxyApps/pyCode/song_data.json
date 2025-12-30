@@ -1,0 +1,352 @@
+[
+    {
+        "artist": "Alex Warren",
+        "song": "Ordinary",
+        "id": "1",
+        "song_rating": 5,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "ROSÉ & Bruno Mars",
+        "song": "APT.",
+        "id": "2",
+        "song_rating": 4,
+        "publisher": "Interscope Records"
+    },
+    {
+        "artist": "Lady Gaga & Bruno Mars",
+        "song": "Die With A Smile",
+        "id": "3",
+        "song_rating": 4,
+        "publisher": "Interscope Records"
+    },
+    {
+        "artist": "sombr",
+        "song": "back to friends",
+        "id": "4",
+        "song_rating": 4,
+        "publisher": "sombr"
+    },
+    {
+        "artist": "Teddy Swims",
+        "song": "Bad Dreams",
+        "id": "5",
+        "song_rating": 4,
+        "publisher": "Warner Records"
+    },
+    {
+        "artist": "Billie Eilish",
+        "song": "BIRDS OF A FEATHER",
+        "id": "6",
+        "song_rating": 4,
+        "publisher": "Darkroom / Interscope Records"
+    },
+    {
+        "artist": "Kendrick Lamar & SZA",
+        "song": "luther (with sza)",
+        "id": "7",
+        "song_rating": 5,
+        "publisher": "Top Dawg Entertainment / Aftermath / Interscope Records"
+    },
+    {
+        "artist": "Ravyn Lenae",
+        "song": "Love Me Not",
+        "id": "8",
+        "song_rating": 4,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Benson Boone",
+        "song": "Beautiful Things",
+        "id": "9",
+        "song_rating": 4,
+        "publisher": "Night Street Records"
+    },
+    {
+        "artist": "Teddy Swims",
+        "song": "Lose Control",
+        "id": "10",
+        "song_rating": 5,
+        "publisher": "Warner Records"
+    },
+    {
+        "artist": "Drake",
+        "song": "NOKIA",
+        "id": "11",
+        "song_rating": 4,
+        "publisher": "OVO"
+    },
+    {
+        "artist": "Ed Sheeran",
+        "song": "Sapphire",
+        "id": "12",
+        "song_rating": 4,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Morgan Wallen & Tate McRae",
+        "song": "What I Want",
+        "id": "13",
+        "song_rating": 4,
+        "publisher": "Big Loud Records"
+    },
+    {
+        "artist": "PinkPantheress",
+        "song": "Illegal",
+        "id": "14",
+        "song_rating": 3,
+        "publisher": "Warner Records"
+    },
+    {
+        "artist": "Charli XCX",
+        "song": "party 4 u",
+        "id": "15",
+        "song_rating": 3,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Chappell Roan",
+        "song": "Good Luck, Babe!",
+        "id": "16",
+        "song_rating": 5,
+        "publisher": "Island Records"
+    },
+    {
+        "artist": "Morgan Wallen",
+        "song": "I'm The Problem",
+        "id": "17",
+        "song_rating": 4,
+        "publisher": "Big Loud Records"
+    },
+    {
+        "artist": "Shaboozey",
+        "song": "A Bar Song (Tipsy)",
+        "id": "18",
+        "song_rating": 5,
+        "publisher": "Empire"
+    },
+    {
+        "artist": "Sabrina Carpenter",
+        "song": "Tears",
+        "id": "19",
+        "song_rating": 4,
+        "publisher": "Island Records"
+    },
+    {
+        "artist": "Kendrick Lamar",
+        "song": "Not Like Us",
+        "id": "20",
+        "song_rating": 5,
+        "publisher": "pgLang/Top Dawg Entertainment/Aftermath/Interscope Records"
+    },
+    {
+        "artist": "Alex Warren",
+        "song": "Eternity",
+        "id": "21",
+        "song_rating": 4,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Chappell Roan",
+        "song": "Pink Pony Club",
+        "id": "22",
+        "song_rating": 4,
+        "publisher": "Amusement Records"
+    },
+    {
+        "artist": "Gigi Perez",
+        "song": "Sailor Song",
+        "id": "23",
+        "song_rating": 4,
+        "publisher": "Gigi Perez"
+    },
+    {
+        "artist": "David Guetta & Sia",
+        "song": "Beautiful People",
+        "id": "24",
+        "song_rating": 3,
+        "publisher": "Warner Music Group"
+    },
+    {
+        "artist": "DOECHII",
+        "song": "Anxiety",
+        "id": "25",
+        "song_rating": 4,
+        "publisher": "Top Dawg Entertainment"
+    },
+    {
+        "artist": "Alex Warren & Jelly Roll",
+        "song": "Bloodline (with Jelly Roll)",
+        "id": "26",
+        "song_rating": 4,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "HUNTR/X, EJAE, AUDREY NUNA, REI AMI",
+        "song": "Golden",
+        "id": "27",
+        "song_rating": 4,
+        "publisher": "Netflix Music, LLC"
+    },
+    {
+        "artist": "Tate McRae",
+        "song": "Just Keep Watching (From F1® The Movie)",
+        "id": "28",
+        "song_rating": 3,
+        "publisher": "RCA Records"
+    },
+    {
+        "artist": "Ed Sheeran",
+        "song": "Camera",
+        "id": "29",
+        "song_rating": 3,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Disco Lines & Tinashe",
+        "song": "No Broke Boys",
+        "id": "30",
+        "song_rating": 3,
+        "publisher": "Island Records"
+    },
+    {
+        "artist": "Sabrina Carpenter",
+        "song": "Manchild",
+        "id": "31",
+        "song_rating": 4,
+        "publisher": "Island Records"
+    },
+    {
+        "artist": "sombr",
+        "song": "undressed",
+        "id": "32",
+        "song_rating": 4,
+        "publisher": "sombr"
+    },
+    {
+        "artist": "The Marías",
+        "song": "No One Noticed",
+        "id": "33",
+        "song_rating": 3,
+        "publisher": "Nice Life Recording Company"
+    },
+    {
+        "artist": "WizTheMc & bees & honey",
+        "song": "Show Me Love",
+        "id": "34",
+        "song_rating": 3,
+        "publisher": "WizTheMc"
+    },
+    {
+        "artist": "Bad Bunny",
+        "song": "DtMF",
+        "id": "35",
+        "song_rating": 5,
+        "publisher": "Rimas Entertainment"
+    },
+    {
+        "artist": "Dua Lipa",
+        "song": "Houdini",
+        "id": "36",
+        "song_rating": 4,
+        "publisher": "Warner Records"
+    },
+    {
+        "artist": "Kendrick Lamar & SZA",
+        "song": "30 for 30",
+        "id": "37",
+        "song_rating": 4,
+        "publisher": "Top Dawg Entertainment / Aftermath / Interscope Records"
+    },
+    {
+        "artist": "Lil Tecca",
+        "song": "Dark Thoughts",
+        "id": "38",
+        "song_rating": 3,
+        "publisher": "Republic Records"
+    },
+    {
+        "artist": "The Weeknd & Playboi Carti",
+        "song": "Timeless",
+        "id": "39",
+        "song_rating": 4,
+        "publisher": "XO Records"
+    },
+    {
+        "artist": "Playboi Carti",
+        "song": "EVIL J0RDAN",
+        "id": "40",
+        "song_rating": 3,
+        "publisher": "Interscope Records"
+    },
+    {
+        "artist": "Charli XCX",
+        "song": "Apple",
+        "id": "41",
+        "song_rating": 3,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Miley Cyrus",
+        "song": "End of the World",
+        "id": "42",
+        "song_rating": 4,
+        "publisher": "Columbia Records"
+    },
+    {
+        "artist": "DOECHII",
+        "song": "DENIAL IS A RIVER",
+        "id": "43",
+        "song_rating": 4,
+        "publisher": "Top Dawg Entertainment"
+    },
+    {
+        "artist": "Megan Thee Stallion",
+        "song": "Megan: Act III",
+        "id": "44",
+        "song_rating": 4,
+        "publisher": "Atlantic Records"
+    },
+    {
+        "artist": "Coldplay",
+        "song": "ALL MY LOVE",
+        "id": "45",
+        "song_rating": 4,
+        "publisher": "Parlophone Records"
+    },
+    {
+        "artist": "Ariana Grande",
+        "song": "dandelion",
+        "id": "46",
+        "song_rating": 3,
+        "publisher": "Republic Records"
+    },
+    {
+        "artist": "Shaboozey & Myles Smith",
+        "song": "Blink Twice",
+        "id": "47",
+        "song_rating": 4,
+        "publisher": "Empire"
+    },
+    {
+        "artist": "Jimin",
+        "song": "Who",
+        "id": "48",
+        "song_rating": 4,
+        "publisher": "BIGHIT MUSIC"
+    },
+    {
+        "artist": "Benson Boone",
+        "song": "Mystical Magical",
+        "id": "49",
+        "song_rating": 3,
+        "publisher": "Night Street Records"
+    },
+    {
+        "artist": "Drake",
+        "song": "DOG HOUSE",
+        "id": "50",
+        "song_rating": 3,
+        "publisher": "OVO"
+    }
+]

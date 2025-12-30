@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YT Comment DownLoader</title>
+    <link href="login2_style.css" rel="stylesheet">
+    <script src="script.js" type="text/javascript"></script>
+    <style>
+                body {
+                  //background-color: #8f9492;
+                  background-color: #679436;
+                  background-color:#ccc;
+                  font-family: sans-serif;
+                }
+                table, th, td {
+                  border: 1px solid black;
+                }
+                * {
+                  box-sizing: border-box;
+                }
+
+                /* Create three unequal columns that floats next to each other */
+                .column {
+                  float: left;
+                  padding: 10px;
+                  //height: 100%;
+                  //height: 550px;/* Should be removed. Only for demonstration */
+                }
+
+                .left, .right {
+                  width: 25%;
+                }
+
+                .left{
+                    //height: 100%;
+                }
+                .middle {
+                    width: 50%;
+                    //height: 100%;
+                }
+
+                /* Clear floats after the columns */
+                .row:after {
+                  content: &quot;&quot;;
+                  display: table;
+                  clear: both;
+                }
+
+                /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+                @media screen and (max-width: 800px) {
+                  .column {
+                    width: 100%;
+                  }
+                }
+                </style>
+  </head>
+  <body>
+    <h1>Hello from Dominate!</h1>
+    <p>This is a paragraph generated using the Dominate library.</p>
+    <p>This page is created to interface as the YoutubeCommentDownloader web GUI.</p>
+    <div class="row">
+      <div class="column left" id="dataEntryColumn" style="background-color:#C0D6DF;">
+        <form action="http://18.225.8.106:5000/proxy/youtube" method="get" name="url_input_form">
+          <p>Enter a YouTube link in the box to download comments:</p>
+          <input name="url_input" type="text">
+          <p>Number of comments to download:</p>
+          <input max="5000" min="100" name="commentCount_input" step="100" type="range">
+          <input type="submit" value="Login">
+        </form>
+        <hr>
+        <form action="http://18.225.8.106:5000/proxy/youtube" method="get" name="search_author_form">
+          <p>Search YouTube comment author:</p>
+          <input name="un_search_input" type="text">
+          <input type="submit" value="Login">
+        </form>
+        <hr>
+        <form action="http://18.225.8.106:5000/proxy/youtube" method="get" name="search_comment_form">
+          <p>Search YouTube comment text:</p>
+          <input name="comment_search_input" type="text">
+          <input type="submit" value="Login">
+        </form>
+        <hr>
+        <form action="http://18.225.8.106:5000/proxy/youtube" method="get" name="search_cid_form">
+          <p>Search base CID for threads:</p>
+          <input name="cid_search_input" type="text">
+          <input type="submit" value="Login">
+        </form>
+        <hr>
+        <form action="http://18.225.8.106:5000/proxy/youtube" method="get" name="count_analysis_form">
+          <p>Data Analysis buttons:</p>
+          <button formaction="http://18.225.8.106:5000/success/proxy/youtube" method="get" name="comment_count_input" type="submit">Count and sort by # of comments</button>
+          <button formaction="http://18.225.8.106:5000/success/proxy/youtube" method="get" name="author_count_input" type="submit">Count # of author comments</button>
+          <button formaction="http://18.225.8.106:5000/success/proxy/youtube" method="get" name="word_count_input" type="submit">Count # of word occurences</button>
+        </form>
+      </div>
+      <div class="column" id="dataDisplayColumn" style="background-color:#DBE9EE; height: 100%; width: 50%; overflow-x:auto;">
+        <p>Data Display:</p>
+        <table>
+          <thead>
+            <tr>
+              <td>author</td>
+              <td>time</td>
+              <td>text</td>
+              <td>cid</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@pereztattoo</td>
+              <td>46 seconds ago</td>
+              <td>��The white have done nothing but steal and Kill whoever did not believe in their will it is a fact in history. Take Puerto Rico as a perfect example the difference is we are not being killed outright now days.  But we are being starved and striped of our riches by the wait it has been happening forever. Eventhoe we fight and die and have died for this country in every war.</td>
+              <td>UgxvmVYzQ_0gYQGBhcZ4AaABAg</td>
+            </tr>
+            <tr>
+              <td>@ImHim5252</td>
+              <td>1 minute ago</td>
+              <td>��White boy said white people smarter look like to me black guy took his ass to history class??????</td>
+              <td>Ugwe6LjCcIWEMPjaz5N4AaABAg</td>
+            </tr>
+            <tr>
+              <td>@marcusjohnson9243</td>
+              <td>1 minute ago</td>
+              <td>��1:08:23 I can t watch this anymore. This white guy doesn t know shit</td>
+              <td>UgwQEFmzqenOrPvdfKZ4AaABAg</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>author</td>
+              <td>time</td>
+              <td>text</td>
+              <td>cid</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
