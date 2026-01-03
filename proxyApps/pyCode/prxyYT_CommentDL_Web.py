@@ -7,7 +7,7 @@ import json #used for data storage/handling
 import operator #Used for sorts
 import datetime # Used to display dates
 from warnings import catch_warnings
-
+from sentiment_analysis import analyze_overall_sentiment
 import youtube_comment_downloader #used to get youtube comment data
 from itertools import islice #used to extract youtube comment data
 
@@ -214,7 +214,7 @@ class DownloadSession:
         myCommentText = ""
         youtube_url = "https://www.youtube.com/watch?v=c52IzePdOag" #
         youtube_url = self.entry_for_link
-        
+   
         #youtube-comment-downloader --url myCommentLink --output myCommentFilePath
         myYoutubeCommentDownloader = youtube_comment_downloader.YoutubeCommentDownloader()
         SORT_BY_POPULAR = 0
@@ -345,7 +345,9 @@ class DownloadSession:
 
         return returnDict
         pass
-
+    # wrapper for sentiment analysis logic
+    def getSentiment(self,name):
+        return analyze_overall_sentiment(self.entry_for_link,self.loadNumComments)
     def countWords(self, option="alpha"):
         print_log("Start coundWords")
 
