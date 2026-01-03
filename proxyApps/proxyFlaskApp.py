@@ -181,7 +181,11 @@ def display_tables(name):
     youtubeCommentPageHtml = myArtist.drawYoutubeTables(name)
     return youtubeCommentPageHtml
     pass
-
+@app.route('/<name>/youtube/sentiment_analysis_input', methods=['GET'])
+def get_sentiment_analysis(name):
+    print("Start: search_comments_author")
+    youtubeCommentPageHtml = myArtist.selectPainting(name, request)
+    return youtubeCommentPageHtml
 ###########################################Login Methods##########################################
 
 @app.route('/<name>/pwtool')
