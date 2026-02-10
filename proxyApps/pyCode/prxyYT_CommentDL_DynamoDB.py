@@ -227,35 +227,19 @@ class DynamoDB_interface:
 
     def get_x_table_items(self, x=100):
         """
-        Retrieves all items from a DynamoDB table using the scan operation with pagination.
+        Retrieves x items from a DynamoDB table using the scan operation with pagination.
 
         Args:
-            table_name (str): The name of the DynamoDB table.
+            x (str): The number of entries to return from the DynamoDB table.
 
         Returns:
-            list: A list containing all items from the table.
+            list: A list containing x items from the table.
         """
+
         #dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
         table = self.dynamodb.Table(self.table_name)
-
-        all_items = []
-        response = table.scan()
-        all_items.extend(response['Items'])
-
-        pageCount = 0
-        respCOunt = response['Count']
-        while 'LastEvaluatedKey' in response:
-            response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
-
-            print(f"get_all_table_items: pageCount: {pageCount}")
-            print(f"get_all_table_items: len response: {len(response['Items'])}")
-            print(f"get_all_table_items: len all_items: {len(all_items)}")
-
-            all_items.extend(response['Items'])
-            if len(all_items) >= x:
-                break
-
-        return all_items
+        response = table.scan(Limit=x)
+        return  response['Items']
 ###############################################################################
 # Example usage:
 

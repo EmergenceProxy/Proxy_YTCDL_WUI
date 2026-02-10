@@ -178,14 +178,16 @@ def sort_most_common_words(name):
 @app.route('/<name>/youtube/tables', methods=['GET'])
 def display_tables(name):
     print("Start: display_tables")
-    youtubeCommentPageHtml = myArtist.drawYoutubeTables(name)
+    youtubeCommentPageHtml = myArtist.drawYoutubeTables(name, request)
     return youtubeCommentPageHtml
     pass
+
 @app.route('/<name>/youtube/sentiment_analysis_input', methods=['GET'])
 def get_sentiment_analysis(name):
     print("Start: search_comments_author")
     youtubeCommentPageHtml = myArtist.selectPainting(name, request)
     return youtubeCommentPageHtml
+
 ###########################################Login Methods##########################################
 
 @app.route('/<name>/pwtool')

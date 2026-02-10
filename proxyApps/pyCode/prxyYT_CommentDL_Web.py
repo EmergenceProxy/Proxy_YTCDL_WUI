@@ -192,8 +192,8 @@ class DownloadSession:
         print("Start readYTComments")
         videoList = []
         print(os.listdir())
-
         return videoList
+
     def queryVideoList(self):
         print("Start readYTComments")
         videoList = []

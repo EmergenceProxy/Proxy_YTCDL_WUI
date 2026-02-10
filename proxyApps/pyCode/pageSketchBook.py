@@ -519,15 +519,13 @@ class drawHTML:
             set_displayAll_button_visible = False
 
 
-        myDynamoDB = DynamoDB_interface(table_name="", region_name="us-east-2")
-        myDynamoDB#Create tables test
         my_table_name = "video_table"  # Replace with your DynamoDB table name
         my_table_name = "comment_table"  # Replace with your DynamoDB table name
         my_table_name = table_select_input_value
         my_table_name = "user_table"  # Replace with your DynamoDB table name
         my_region_name = "us-east-2"  # Replace with your DynamoDB table name
         myDynamoDB_interface = DynamoDB_interface(my_table_name, my_region_name)
-        showAllFields = True
+        showAllFields = False
 
         break_long_words_style = f"overflow-wrap: break-word;  word-wrap: break-word;  word-break: break-all;  word-break: break-word;  hyphens: auto;"
         dataDisplayColumnStyle = f"background-color:#AAFFEE; height: 100%; width: 100%;"  # overflow-x:auto;"
@@ -536,7 +534,7 @@ class drawHTML:
         dataDisplayCidColumnStyle = f"width:20%;"  # word-wrap: break-all;overflow-x:auto;"
 
         #get_all_table_items test
-        # table_items = myDynamoDB_interface.get_all_table_items()
+        #table_items = myDynamoDB_interface.get_all_table_items()
         table_items = myDynamoDB_interface.get_x_table_items(commentCount_range_value)
         print(f"drawDynamoTableColumn: Retrieved {len(table_items)} items from {myDynamoDB_interface.table_name}.")
 
@@ -558,20 +556,23 @@ class drawHTML:
                     if showAllFields:
                         # print(f"-----drawDynamoTableColumn: table_items {table_items}.")
                         # print(f"-----drawDynamoTableColumn: table_items[\"1\"] {table_items[1]}.")
+                        tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
                         for headerValue in table_items[0].keys():  # add all fields
                             tableHeaderRow.add(td(headerValue))
                     else:
-                        if "user_table" in my_table_name:
-                            tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
-                            tableHeaderRow.add(td("user_id", style=dataDisplayEntryColumnStyle+break_long_words_style))
-                            tableHeaderRow.add(td("video_id_list", style=break_long_words_style))
-                            tableHeaderRow.add(td("channel", style=break_long_words_style))
                         if "comment_table" in my_table_name:
                             tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
                             tableHeaderRow.add(td("Authors", style=break_long_words_style))
                             tableHeaderRow.add(td("Entry Time", style=break_long_words_style))
                             tableHeaderRow.add(td("Comment", style=dataDisplayCommentColumnStyle))  # dataDisplayCommentColumnStyle
                             tableHeaderRow.add(td("Comment ID", style=dataDisplayCidColumnStyle + break_long_words_style))  # dataDisplayCidColumnStyle
+                        else: #default to #"user_table" in my_table_name:
+                            tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
+                            tableHeaderRow.add(td("user_id", style=dataDisplayEntryColumnStyle))
+                            tableHeaderRow.add(
+                                td("comment_count", style=dataDisplayEntryColumnStyle))
+                            tableHeaderRow.add(td("video_id_list", style=break_long_words_style))
+                            tableHeaderRow.add(td("channel", style=break_long_words_style))
                     pass
                 with tbody():
                     entryCount = 1
@@ -605,9 +606,10 @@ class drawHTML:
                                                     style=dataDisplayCidColumnStyle + break_long_words_style))  # dataDisplayCidColumnStyle
                             else: #default to user_table
                                 tableDataRow.add(td(entryCount))
-                                tableDataRow.add(td(comment["user_id"]))
+                                tableDataRow.add(td(comment["user_id"], style=dataDisplayCidColumnStyle))
+                                tableDataRow.add(td(comment["comment_count"]))
                                 tableDataRow.add(td(comment["video_id_list"]))
-                                tableDataRow.add(td(comment["channel"]))
+                                tableDataRow.add(td(comment["channel"], style=dataDisplayCidColumnStyle))
                             entryCount += 1
                     pass
                 with tfoot():
@@ -617,14 +619,16 @@ class drawHTML:
                             tableFooterRow.add(td(headerValue))
                     else:
                         if "comment_table" in my_table_name:
-                            tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
-                            tableHeaderRow.add(td("Authors", style=break_long_words_style))
-                            tableHeaderRow.add(td("Entry Time", style=break_long_words_style))
-                            tableHeaderRow.add(td("Comment", style=dataDisplayCommentColumnStyle))  # dataDisplayCommentColumnStyle
-                            tableHeaderRow.add(td("Comment ID", style=dataDisplayCidColumnStyle + break_long_words_style))  # dataDisplayCidColumnStyle
+                            tableFooterRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
+                            tableFooterRow.add(td("Authors", style=break_long_words_style))
+                            tableFooterRow.add(td("Entry Time", style=break_long_words_style))
+                            tableFooterRow.add(td("Comment", style=dataDisplayCommentColumnStyle))  # dataDisplayCommentColumnStyle
+                            tableFooterRow.add(td("Comment ID", style=dataDisplayCidColumnStyle + break_long_words_style))  # dataDisplayCidColumnStyle
                         else: #default to user_table
                             tableFooterRow.add(td("Entry #", style=dataDisplayEntryColumnStyle + break_long_words_style))
-                            tableFooterRow.add(td("user_id", style=dataDisplayEntryColumnStyle + break_long_words_style))
+                            tableFooterRow.add(td("user_id", style=dataDisplayEntryColumnStyle))
+                            tableFooterRow.add(
+                                td("comment_count", style=dataDisplayEntryColumnStyle))
                             tableFooterRow.add(td("video_id_list", style=break_long_words_style))
                             tableFooterRow.add(td("channel", style=break_long_words_style))
                     pass
