@@ -7,7 +7,7 @@ from dominate.util import text
 import sys
 
 # adding Folder_2 to the system path
-sys.path.insert(0, '/home/proxyApps/pyCode')
+sys.path.insert(0, '/home/ec2-user/Proxy_YTCDL_WUI/proxyApps/pyCode') #update to be dynamic for installation
 print(f"-----------------os path: {os.getcwd()}")
 from prxyYT_CommentDL_Web import DownloadSession
 from prxyYT_CommentDL_DynamoDB import DynamoDB_interface
