@@ -29,7 +29,7 @@ class DownloadSession:
         self.loadNumComments = None
         # self.label_for_comments = None
         self.comment_dict = {}
-        self.workingDir = "/home/proxyApps/appData/ytcData"
+        self.workingDir = "/home/ec2-user/Proxy_YTCDL_WUI/proxyApps/appData/ytcData" #update to be dynamic for installation
         self.customFilename = ""
         
         print(f"DownloadSession: init: len(form):{form}")

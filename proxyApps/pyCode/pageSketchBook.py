@@ -7,7 +7,7 @@ from dominate.util import text
 import sys
 
 # adding Folder_2 to the system path
-sys.path.insert(0, '/home/proxyApps/pyCode')
+sys.path.insert(0, '/home/ec2-user/Proxy_YTCDL_WUI/proxyApps/pyCode') #update to be dynamic for installation
 print(f"-----------------os path: {os.getcwd()}")
 from prxyYT_CommentDL_Web import DownloadSession
 from prxyYT_CommentDL_DynamoDB import DynamoDB_interface
@@ -283,7 +283,30 @@ class drawHTML:
                         tableDataRow.add(td(overall_sentiment, style=dataDisplayEntryColumnStyle_ana+break_long_words_style_ana))
                         tableDataRow.add(td(summary,style=dataDisplayEntryColumnStyle_ana+break_long_words_style_ana))
             return SentimentAnalysisDiv
-    def drawDataDisplayColumn(self, showAllFields = False):
+    
+    def drawDataDisplayColumn(self, username, formDict, showAllFields = False):
+        if formDict is not None:
+            print("drawDataDisplayColumn: pull form values") #Add user input data to page b4 transmit
+            url_input_value = formDict["url_input"]
+            commentCount_range_value = formDict["commentCount_range"]
+            commentCount_input_value = formDict["commentCount_input"]
+            un_search_value = formDict["un_search_input"]
+            comment_search_value = formDict["comment_search_input"]
+            cid_search_value = formDict["cid_search_input"]
+            set_displayAll_button_visible = True
+            print(f"drawDataDisplayColumn: url_input_value: {url_input_value}")
+            print(f"drawDataDisplayColumn: url_input_value: {commentCount_input_value}")
+        else:
+            print("drawDataDisplayColumn: print basic form")
+            print(f"drawDataDisplayColumn: username: {username}")
+            url_input_value = ""
+            commentCount_range_value = 100
+            commentCount_input_value = 100
+            un_search_value = ""
+            comment_search_value = ""
+            cid_search_value = ""
+            set_displayAll_button_visible = False
+
         # showAllFields = False
         setDivWidth = "width: 100%;"
 
@@ -306,7 +329,7 @@ class drawHTML:
                     if showAllFields:
                         # print(f"-----drawDataDisplayColumn: self.videoData {self.videoData}.")
                         # print(f"-----drawDataDisplayColumn: self.videoData[\"1\"] {self.videoData['1']}.")
-                        for headerValue in self.videoData['1'].keys():  # add all fields
+                        for headerValue in self.videoData["1"].keys():  # add all fields
                             tableHeaderRow.add(td(headerValue))
                     else:
                         tableHeaderRow.add(td("Entry #", style=dataDisplayEntryColumnStyle+break_long_words_style))
@@ -319,28 +342,32 @@ class drawHTML:
                     for entry in self.videoData:
                         tableDataRow = tr()
                         comment = self.videoData[entry]
-                        # print(f"drawYoutubeDownloader_CommentData: entry: {entry}\n")
+                        # print(f"drawDataDisplayColumn: entry: {entry}\n")
                         if showAllFields:
                             for headerValue in comment.keys():
                                 # self.videoData["1"]
                                 tempData = comment[headerValue]
                                 if "text" in headerValue:
                                     tempData = comment[headerValue]
-                                    # print("drawYoutubeDownloader_CommentData: text surrogate removal, pre: ",tempData)
+                                    # print("drawDataDisplayColumn: text surrogate removal, pre: ",tempData)
                                     tempData = self.remove_surrogates(tempData)
-                                    # print(f"drawYoutubeDownloader_CommentData: text surrogate removal, post: {tempData}\n")
+                                    # print(f"drawDataDisplayColumn: text surrogate removal, post: {tempData}\n")
                                 tableDataRow.add(td(str(tempData)))
                         else:
                             tableDataRow.add(td(entry))
-                            tableDataRow.add(td(comment["author"], style=break_long_words_style))
+                            # tableDataRow.add(td(a(comment["author"], style=break_long_words_style)) #oriinal code before link addition
+                            tableDataRow.add(td(a(comment["author"], href=f"{self.homeIpAddress}:5000/{username}/youtube/search_comments_author?url_input={url_input_value}&un_search_input={comment['author']}&commentCount_range={int(commentCount_range_value)}&commentCount_input={int(commentCount_input_value)}&search_author_form=Search&comment_search_input=&cid_search_input="), style=break_long_words_style))
                             tableDataRow.add(td(comment["time"]))
 
                             tempData = comment["text"]
-                            # print("drawYoutubeDownloader_CommentData: text surrogate removal, pre: ",tempData)
+                            # print("drawDataDisplayColumn: text surrogate removal, pre: ",tempData)
                             tempData = self.remove_surrogates(tempData)
                             # print(f"drawYoutubeDownloader_CommentData: text surrogate removal, post: {tempData}\n")
                             tableDataRow.add(td(tempData, style=dataDisplayCommentColumnStyle))#dataDisplayCommentColumnStyle
-                            tableDataRow.add(td(comment["cid"], style=dataDisplayCidColumnStyle+break_long_words_style))#dataDisplayCidColumnStyle
+                            
+                            # tableDataRow.add(td(a(comment["cid"], style=dataDisplayCidColumnStyle+break_long_words_style))#dataDisplayCidColumnStyle #oriinal code before link addition
+                            rowLinkCid = comment['cid'].split(".")[0] #pull base cid for thread link
+                            tableDataRow.add(td(a(comment["cid"], href=f"{self.homeIpAddress}:5000/{username}/youtube/search_comments_author?url_input={url_input_value}&un_search_input=&commentCount_range={int(commentCount_range_value)}&commentCount_input={int(commentCount_input_value)}&search_cid_form=Search&comment_search_input=&cid_search_input={rowLinkCid}"), style=dataDisplayCidColumnStyle+break_long_words_style))#dataDisplayCidColumnStyle
                     pass
                 with tfoot():
                     tableFooterRow = tr()
@@ -432,7 +459,7 @@ class drawHTML:
                     self.drawDataSentimentColumn(isSemantic)
                     #data display Column
                     print(f"drawYoutubeDownloader_CommentData: showAllFields: {showAllFields}")
-                    self.drawDataDisplayColumn(showAllFields)
+                    self.drawDataDisplayColumn(username, formDict, showAllFields)
 
             with div(id='footer', style="background-color:#E0BAD7;"):
                 #p('-----------------------------I am a footer')
@@ -497,14 +524,14 @@ class drawHTML:
                 #        name='word_count_input', title="Click to count the occurences of each word, and sort by #.")
         pass
 
-    def drawDynamoTableColumn(self, formDict):
+    def drawDynamoTableColumn(self, username, formDict):
         print("Start: drawDynamoTableColumn")
         if formDict is not None:
             print("drawDynamoTableColumn: pull form values")  # Add user input data to page b4 transmit
-            table_select_input_value = formDict["table_select_input"]
-            table_search_input_value = formDict["table_search_input"]
-            commentCount_range_value = formDict["commentCount_range"]
-            commentCount_input_value = formDict["commentCount_input"]
+            table_select_input_value = formDict.args.get('table_select_input')
+            table_search_input_value = formDict.args.get('table_search_input')
+            commentCount_range_value = formDict.args.get('commentCount_range')
+            commentCount_input_value = formDict.args.get('commentCount_input')
             set_displayAll_button_visible = True
             print(f"drawDynamoTableColumn: url_input_value: {table_select_input_value}")
             print(f"drawDynamoTableColumn: table_search_input_value: {table_search_input_value}")
@@ -662,7 +689,7 @@ class drawHTML:
                 # data entry Column
                 # dataentryDiv +=
                 self.drawTableSelectColumn(username=name)
-                self.drawDynamoTableColumn(formDict)
+                self.drawDynamoTableColumn(name, formDict)
 
                 # data display Column
                 showAllFields = False
@@ -706,7 +733,7 @@ class drawHTML:
 ##############################-HTML Selector-#####################################
     def draw_url_input_form(self, name, formDict):
         print("Start: draw_url_input_form")
-        print(f"selectPainting: form: {formDict}")
+        print(f"draw_url_input_form: form: {formDict}")
         return self.drawYoutubeDownloader_CommentData(name, formDict)
         pass
 
