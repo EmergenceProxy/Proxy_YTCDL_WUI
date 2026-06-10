@@ -29,7 +29,7 @@ class DownloadSession:
         self.loadNumComments = None
         # self.label_for_comments = None
         self.comment_dict = {}
-        self.workingDir = "/home/proxyApps/appData/ytcData"
+        self.workingDir = "/home/ec2-user/Proxy_YTCDL_WUI/proxyApps/appData/ytcData" #update to be dynamic for installation
         self.customFilename = ""
         
         print(f"DownloadSession: init: len(form):{form}")
@@ -339,7 +339,7 @@ class DownloadSession:
 
         for x in sorted_x:
             # print( x[0],":", x[1])
-            tempCountDict = {"Author":x[0],"# of Comments":x[1]}
+            tempCountDict = {"Entry": str(countloops), "Author":x[0], "# of Comments":x[1]}
             returnDict.update({str(countloops):tempCountDict})
             countloops += 1
 
@@ -433,7 +433,7 @@ class DownloadSession:
 
         for x in sorted_x:
             # print( x[0], x[1])
-            tempCountDict = {"Word": x[0], "Appears": x[1]}
+            tempCountDict = {"Entry": str(countloops), "Word": x[0], "Appears": x[1]}
             returnDict.update({str(countloops): tempCountDict})
             countloops += 1
 
