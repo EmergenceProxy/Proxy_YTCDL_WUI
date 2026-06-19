@@ -363,7 +363,7 @@ class DownloadSession:
             thisText = self.comment_dict[comment]["text"]
             # print("coundWords: thisText: ",thisText)
 
-            thisText = thisText.replace("\n", " ")
+            thisText = thisText.replace("\n", " ") #Look here
             thisText = thisText.replace("\"", "")
             # thisText = thisText.replace("\'", "")
             thisText = thisText.replace("“", "")
