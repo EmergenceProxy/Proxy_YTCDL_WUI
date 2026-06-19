@@ -6,6 +6,7 @@ import os   #used to handle files
 import json #used for data storage/handling
 import operator #Used for sorts
 import datetime # Used to display dates
+import string #used to strip punctuation
 from warnings import catch_warnings
 from sentiment_analysis import analyze_overall_sentiment
 import youtube_comment_downloader #used to get youtube comment data
@@ -363,14 +364,10 @@ class DownloadSession:
             thisText = self.comment_dict[comment]["text"]
             # print("coundWords: thisText: ",thisText)
 
-            thisText = thisText.replace("\n", " ") #Look here
-            thisText = thisText.replace("\"", "")
-            # thisText = thisText.replace("\'", "")
-            thisText = thisText.replace("“", "")
-            thisText = thisText.replace(".", " ")
-            thisText = thisText.replace("!", " ")
+            thisText = thisText.translate(str.maketrans('', '', string.punctuation))
             thisText = thisText.lower()
             thisText.split(" ")
+
             for word in thisText.split(" "):
                 # print(f"Word: {word}")
                 word = word.strip("\" .,(){}[]")
