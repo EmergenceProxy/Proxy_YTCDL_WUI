@@ -313,7 +313,7 @@ class DownloadSession:
             else:
                 authorList.update({thisAuthor:1})
                 #print("countAuthors: authorList[]: ",authorList[thisAuthor])
-        
+
         #display list
         #for author in authorList:
         #    self.label_for_comments.insert(END, str(author)+" appears: ")
@@ -364,6 +364,12 @@ class DownloadSession:
             thisText = self.comment_dict[comment]["text"]
             # print("coundWords: thisText: ",thisText)
 
+            thisText = thisText.replace("\n", " ")  # Look here
+            thisText = thisText.replace("\"", "")
+            # thisText = thisText.replace("\'", "")
+            thisText = thisText.replace("“", "")
+            thisText = thisText.replace(".", " ")
+            thisText = thisText.replace("!", " ")
             thisText = thisText.translate(str.maketrans('', '', string.punctuation))
             thisText = thisText.lower()
             thisText.split(" ")
