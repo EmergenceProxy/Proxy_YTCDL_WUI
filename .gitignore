@@ -4,6 +4,8 @@
 __pycache__/
 
 instance/
+proxyApps/appData/
+proxyApps/proxy_test_env/
 
 .pytest_cache/
 .coverage
