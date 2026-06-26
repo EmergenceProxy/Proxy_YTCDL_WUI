@@ -92,9 +92,12 @@ startYtcdl(){
 
 		#Python modules to install in the proxy_test_env virtual python environment
 		pip install Flask
+		pip install boto3
+		pip install authlib
 		pip install dominate
 		pip install urllib3==1.26.6
 		pip install youtube_comment_downloader
+		
 		writeLog "startYtcdl: virtual env modules installed."
 
 		#touch hello.py
