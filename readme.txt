@@ -1,7 +1,7 @@
 ## Usage
 
 ### Set Vars
-appDataDir="/home/ec2-user/git_repos/Proxy_YTCDL_WUI/proxyApps/appData"
+appDataDir="/home/ec2-user/Proxy_YTCDL_WUI/proxyApps/appData"
 
 cd proxyApps
 
@@ -25,6 +25,9 @@ homeIpAddress = "http://<>
 ### Start Flask server
 export FLASK_APP=proxyFlaskApp.py; flask run --host=0.0.0.0 &> $appDataDir/flaskOutput.log;
 
+### run task in bg
+ctrl + z
+bg
 
 ### Verify start
 ll appData/
